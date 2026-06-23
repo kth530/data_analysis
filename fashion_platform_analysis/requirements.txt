@@ -1,0 +1,19 @@
+# 데이터 분석
+pandas==2.3.3
+numpy==2.2.6
+scipy==1.15.3
+
+# 시각화
+plotly==6.5.2
+matplotlib==3.10.9
+wordcloud==1.9.6
+
+# DB 연결 (MySQL)
+SQLAlchemy==2.0.48
+mysql-connector-python==9.6.0
+
+# 환경 변수
+python-dotenv==1.2.2
+
+# 한국어 형태소 분석 (07_text_analysis, Java 11+ 필요)
+konlpy==0.6.0

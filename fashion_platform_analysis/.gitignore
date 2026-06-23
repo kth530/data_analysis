@@ -1,0 +1,14 @@
+.env
+.DS_Store
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+.claude/
+CLAUDE.md
+
+# 개인정보 — 추첨용 이메일 포함 원본 설문 데이터는 공개하지 않음
+raw_data/
+
+# Claude Code 작업 산출물 (공개 불필요)
+.agents/
+skills-lock.json
