@@ -4,6 +4,17 @@
 
 > **핵심 결론** — NPS는 낮지만(−32.0) 즉시 이탈로 이어지는 구조는 약했다. 많은 사용자는 익숙함·혜택·탐색 습관 속에서 사용을 유지하는 **소극적 잔류층**에 가까웠다. 따라서 개선 우선순위는 단순 이탈 방어보다 **소극적 잔류층 전환 · 객단가 신호 높은 재활성화 후보 관리 · 사이즈/정보 신뢰성 개선**에 있다.
 
+## 폴더 구조
+
+```
+fashion_platform_analysis/
+├── README.md
+├── docs/           # 변수·세그먼트 정의·통계 방법론·SQL 워크플로
+├── notebooks/      # 00–07 분석 노트북
+├── sql/            # 03–07 분석 쿼리
+└── .env.example
+```
+
 ---
 
 ## 데이터 개요
@@ -53,41 +64,18 @@
 
 ## 기술 스택
 
-`Python` · `pandas` · `numpy` · `scipy` · `SQLAlchemy` / `MySQL` · `plotly` · `matplotlib` · `wordcloud` · `KoNLPy(Okt)`
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white)
 
 ---
 
-## 실행 방법
+## 열람 안내
 
-```bash
-# 1) 의존성 설치
-pip install -r requirements.txt
+원본 설문 데이터에는 추첨용 이메일이 포함되어 있어 공개 저장소에는 포함하지 않았다.
 
-# 2) 환경 변수 설정 — .env.example을 복사 후 자기 환경 값 입력
-cp .env.example .env
-#   DB_USER / DB_PASSWORD / DB_HOST / DB_NAME (MySQL)
-#   JAVA_HOME (07 KoNLPy Okt 실행에 Java 11+ 필요)
-
-# 3) 01_cleaning.ipynb 실행으로 survey 테이블 적재 후 02~07 순서대로 실행
-```
-
-- **DB 의존**: 02–07 노트북은 MySQL `survey` 테이블을 읽는다. `01_cleaning`이 적재를 담당한다.
-- **07 텍스트 분석**: KoNLPy Okt는 Java 11+가 필요하다. 환경별 `JAVA_HOME` 설정 예시는 `.env.example` 참조.
-- 원본 데이터는 비공개이므로, 외부에서 재현하려면 동일 구조의 설문 데이터가 필요하다. 렌더된 노트북 출력으로 분석 결과는 그대로 확인할 수 있다.
-
----
-
-## 폴더 구조
-
-```
-fashion_platform_analysis/
-├── notebooks/      # 00–07 분석 노트북 (시각화·검정·해석)
-├── sql/            # 03–07 분석 쿼리 (노트북당 1파일, -- name: 마커)
-├── docs/           # 변수·세그먼트 정의·통계 방법론(METHODS.md)·SQL 워크플로 등 레퍼런스
-├── raw_data/       # 원본 설문 (개인정보 — 비공개, .gitignore)
-├── requirements.txt
-└── .env.example
-```
+- 주요 분석 결과는 렌더된 노트북에서 바로 확인할 수 있다.
+- 03–07 분석에서 사용한 SQL 쿼리는 [`sql/`](sql/) 폴더에 분리했다.
+- 변수 정의, 세그먼트 기준, 통계 방법론은 [`docs/`](docs/)에서 확인할 수 있다.
 
 ---
 
