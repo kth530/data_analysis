@@ -43,9 +43,11 @@
 | 06 | `06_channel.ipynb` | 인지 경로·구매 영향 채널 + 멀티호밍 |
 | 07 | `07_text_analysis.ipynb` | Q18 자유응답 키워드·카테고리 분류 + Non-User 사유 |
 
+**워크플로**: SQL로 추출·집계·분류를 수행하고(노트북당 단일 `sql/NN_*.sql`에 `-- name:` 마커로 정리), Python 노트북은 시각화·통계 검정·텍스트 분석을 담당한다. 노트북은 `load_queries()`로 쿼리를 이름 호출한다.
+
 분석 방법: 카이제곱(+Cramér's V·조정 표준화 잔차), Mann-Whitney U(+rank-biserial), Spearman 순위상관, KoNLPy Okt 형태소 분석. 다중응답 문항은 검정 대신 응답자 기준 비율 비교로 해석.
 
-세부 변수·세그먼트 정의는 [`docs/`](docs/) 참조.
+세부 변수·세그먼트 정의는 [`docs/`](docs/), 통계 방법론은 [`METHODS.md`](docs/METHODS.md) 참조.
 
 ---
 
@@ -79,8 +81,9 @@ cp .env.example .env
 
 ```
 fashion_platform_analysis/
-├── notebooks/      # 00–07 분석 노트북
-├── docs/           # 변수·세그먼트 정의 등 분석 레퍼런스
+├── notebooks/      # 00–07 분석 노트북 (시각화·검정·해석)
+├── sql/            # 03–07 분석 쿼리 (노트북당 1파일, -- name: 마커)
+├── docs/           # 변수·세그먼트 정의·통계 방법론(METHODS.md)·SQL 워크플로 등 레퍼런스
 ├── raw_data/       # 원본 설문 (개인정보 — 비공개, .gitignore)
 ├── requirements.txt
 └── .env.example
