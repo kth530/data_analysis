@@ -7,9 +7,10 @@ data/
 # DB 파일
 *.db
 
-# 패키지 의존성
-requirements.txt
-
 # Jupyter 임시 파일
 .ipynb_checkpoints/
 **/.ipynb_checkpoints/
+
+# macOS
+.DS_Store
+**/.DS_Store
