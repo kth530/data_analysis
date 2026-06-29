@@ -139,3 +139,48 @@ SELECT
 FROM ranked r
 JOIN rfm_result g ON r.고객ID = g.고객ID
 WHERE r.rn = 1
+
+-- name: first_category_agg | 첫 구매 카테고리별 전체·DP 고객수 (비율·전환율은 Python)
+WITH first_dates AS (
+    SELECT
+        고객ID,
+        MIN(거래날짜) AS 첫_구매일
+    FROM orders_master
+    GROUP BY 고객ID
+),
+first_day_amounts AS (
+    SELECT
+        o.고객ID,
+        o.제품카테고리,
+        SUM(o.세후금액) AS 카테고리_금액
+    FROM orders_master o
+    JOIN first_dates f
+        ON o.고객ID = f.고객ID
+        AND o.거래날짜 = f.첫_구매일
+    GROUP BY o.고객ID, o.제품카테고리
+),
+ranked AS (
+    SELECT
+        고객ID,
+        제품카테고리,
+        ROW_NUMBER() OVER (
+            PARTITION BY 고객ID
+            ORDER BY 카테고리_금액 DESC, 제품카테고리 ASC
+        ) AS rn
+    FROM first_day_amounts
+),
+first_cat AS (
+    SELECT
+        r.고객ID,
+        r.제품카테고리 AS 첫_카테고리,
+        g.등급
+    FROM ranked r
+    JOIN rfm_result g ON r.고객ID = g.고객ID
+    WHERE r.rn = 1
+)
+SELECT
+    첫_카테고리,
+    COUNT(*) AS 전체_고객수,
+    SUM(CASE WHEN 등급 IN ('Diamond', 'Platinum') THEN 1 ELSE 0 END) AS DP_고객수
+FROM first_cat
+GROUP BY 첫_카테고리

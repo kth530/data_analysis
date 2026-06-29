@@ -79,3 +79,30 @@ SELECT 세그먼트, COUNT(*) AS 고객수
 FROM rfm_result
 GROUP BY 세그먼트
 ORDER BY 고객수 DESC
+
+-- name: grade_summary | 등급별 고객수·매출합계·1인당지출 (비중·반올림은 Python)
+SELECT
+    등급,
+    COUNT(*) AS 고객수,
+    SUM(Monetary) AS 매출합계,
+    AVG(Monetary) AS 1인당지출
+FROM rfm_result
+GROUP BY 등급
+
+-- name: grade_segment_counts | 세그먼트×등급 고객수 (long, pivot은 Python)
+SELECT 세그먼트, 등급, COUNT(*) AS 고객수
+FROM rfm_result
+GROUP BY 세그먼트, 등급
+
+-- name: grade_revisit_rate | 등급별 재방문(방문일수>1) 고객수·전체수 (재방문율은 Python)
+SELECT
+    r.등급,
+    SUM(CASE WHEN v.방문일수 > 1 THEN 1 ELSE 0 END) AS 재방문고객,
+    COUNT(*) AS 전체고객
+FROM rfm_result r
+JOIN (
+    SELECT 고객ID, COUNT(DISTINCT DATE(거래날짜)) AS 방문일수
+    FROM orders_master
+    GROUP BY 고객ID
+) v ON r.고객ID = v.고객ID
+GROUP BY r.등급
