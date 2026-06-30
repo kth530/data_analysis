@@ -9,8 +9,8 @@
 
 | Project | Summary | Stack |
 |---|---|---|
-| [Fashion Platform Analysis](https://github.com/kth530/fashion_platform_analysis) | 설문 기반 패션 플랫폼 사용자 행동 분석. NPS, 구매 행동, 채널, 자유응답을 연결해 개선 우선순위를 도출했습니다. | Python · MySQL · Tableau |
-| [Dacon E-commerce Analysis](https://github.com/kth530/dacon_e_commerce) | 2019년 이커머스 거래 데이터를 기반으로 고객 리텐션, RFM 등급, 등급별 관리 우선순위를 분석했습니다. | Python · MySQL · Tableau |
+| [Fashion Platform Analysis](https://github.com/kth530/fashion_platform_analysis) | 설문 기반 패션 플랫폼 사용자 행동 분석. NPS, 구매 행동, 채널, 자유응답을 연결해 개선 우선순위를 도출했습니다. | ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white) ![Tableau](https://img.shields.io/badge/Tableau-E97627?style=flat-square&logo=tableau&logoColor=white) |
+| [Dacon E-commerce Analysis](https://github.com/kth530/dacon_e_commerce) | Dacon 이커머스 데이터를 기반으로 리텐션·RFM 등급·고객군별 액션 우선순위를 분석했습니다. | ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white) ![Tableau](https://img.shields.io/badge/Tableau-E97627?style=flat-square&logo=tableau&logoColor=white) |
 
 ## Notes
 
