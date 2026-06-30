@@ -11,3 +11,7 @@ CLAUDE.md
 __pycache__/
 *.pyc
 *.pyo
+
+# Standalone project repositories
+fashion_platform_analysis/
+dacon_e_commerce/
